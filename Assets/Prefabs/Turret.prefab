@@ -147,7 +147,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -219,4 +219,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 0}
   MyEnnemies: []
+  attackWaitTime: 0.5
   bulletPrefab: {fileID: 7249719264839212669, guid: 1e3a3f6604bb3b648abbb5e9185097b9, type: 3}

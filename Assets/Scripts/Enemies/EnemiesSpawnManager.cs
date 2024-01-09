@@ -91,6 +91,7 @@ public class EnemiesSpawnManager : MonoBehaviour
     {
         enemy.SetActive(false);
         _enemiesAliveNumber -= 1;
+        _enemiesAliveNumberTxt.text = "Enemies alive n° : \n" + _enemiesAliveNumber;
         activeEnemiesList.Remove(enemy);
         desactivatedEnemiesList.Add(enemy);
     }

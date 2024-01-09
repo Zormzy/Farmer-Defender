@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 453002058}
   - component: {fileID: 453002057}
   - component: {fileID: 453002056}
+  - component: {fileID: 453002060}
   m_Layer: 0
   m_Name: Controlller
   m_TagString: Untagged
@@ -485,6 +486,7 @@ MonoBehaviour:
   _mousePosition: {x: 0, y: 0}
   preview: {fileID: 540296371}
   TurretPrefab: {fileID: 918249604954204855, guid: 593013b8823d62144a942ea261891ebd, type: 3}
+  ParentTurret: {fileID: 565162409}
 --- !u!4 &453002059
 Transform:
   m_ObjectHideFlags: 0
@@ -500,6 +502,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &453002060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453002055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2af1b086deacb042abdcfe60c5f0f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBulletToInstanciate: 100
+  bulletPrefab: {fileID: 7249719264839212669, guid: 1e3a3f6604bb3b648abbb5e9185097b9, type: 3}
 --- !u!1 &540296371
 GameObject:
   m_ObjectHideFlags: 0
