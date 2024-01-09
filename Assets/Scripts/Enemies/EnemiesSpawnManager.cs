@@ -92,7 +92,7 @@ public class EnemiesSpawnManager : MonoBehaviour
         _actualWave = 1;
         _enemiesNumberToSpawn = 10;
         _enemyMaxNumber = _enemiesNumberToSpawn * (5 * _waveMax);
-        _spawnTimer = 60f;
+        _spawnTimer = 10f;
         _spawnTimerCounter = 0f;
         _enemiesSpawnedPosition = _enemiesSpawnerPosition.transform.position;
     }
