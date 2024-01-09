@@ -7,6 +7,7 @@ public class TurretsButton : MonoBehaviour
     public TextMeshProUGUI damageTxt;
     public TextMeshProUGUI fireRateTxt;
     public TextMeshProUGUI RangeTxt;
+    public TextMeshProUGUI CostTxt;
     public GameObject image;
 
 
@@ -22,6 +23,7 @@ public class TurretsButton : MonoBehaviour
         damageTxt.text = "Damage : " + turret.damage.ToString();
         fireRateTxt.text = "Fire Rate : " + turret.fireRate.ToString();
         RangeTxt.text = "Range : " + turret.Range.ToString();
+        CostTxt.text = "Cost : " + turret.cost.ToString();
 
         image.GetComponent<UnityEngine.UI.Image>().sprite = turret.model;
     }

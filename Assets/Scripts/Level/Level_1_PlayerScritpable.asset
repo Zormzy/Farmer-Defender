@@ -15,3 +15,5 @@ MonoBehaviour:
   levelNumber: 1
   playerMaxHP: 10
   playerHP: 0
+  moneyStart: 20
+  actualMoney: 0

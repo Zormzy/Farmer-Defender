@@ -17,3 +17,4 @@ MonoBehaviour:
   enemyHP: 5
   enemyDamage: 1
   enemySpeed: 3
+  gold: 1
