@@ -28,6 +28,10 @@ public class EnemiesSpawnManager : MonoBehaviour
     public List<GameObject> activeEnemiesList;
     public List<GameObject> desactivatedEnemiesList;
 
+    [Header("VictoryCanvas")]
+    [SerializeField] private TextMeshProUGUI _victoryStatusText;
+    [SerializeField] private GameObject _victoryCanvas;
+
     private void Awake()
     {
         EnemiesSpawnManagerInitialization();
@@ -43,6 +47,13 @@ public class EnemiesSpawnManager : MonoBehaviour
     private void Update()
     {
         SpawnTimer();
+
+        if (_actualWave == _waveMax)
+            if (_enemiesAliveNumber <= 0)
+            {
+                _victoryStatusText.text = "Success";
+                _victoryCanvas.SetActive(true);
+            }
     }
 
     private void SpawnTimer()
