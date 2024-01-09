@@ -47,7 +47,7 @@ public class EnemiesSpawnManager : MonoBehaviour
         {
             SpawnEnemies();
             _actualWave += 1;
-            _enemiesNumberToSpawn += (5 * _actualWave);
+            _enemiesNumberToSpawn += (5 * (_actualWave - 1));
             _spawnTimerCounter = 0f;
         }
     }
