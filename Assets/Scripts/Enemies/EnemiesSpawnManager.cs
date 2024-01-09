@@ -54,13 +54,16 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        for (int i = 0; i < _enemiesNumberToSpawn; i++)
+        if (desactivatedEnemiesList.Count > 0)
         {
-            _enemyToActivate = desactivatedEnemiesList[desactivatedEnemiesList.Count - 1];
-            desactivatedEnemiesList.RemoveAt(desactivatedEnemiesList.Count - 1);
-            _enemyToActivate.transform.position = _enemiesSpawnedPosition;
-            _enemyToActivate.SetActive(true);
-            activeEnemiesList.Add(_enemyToActivate);
+            for (int i = 0; i < _enemiesNumberToSpawn; i++)
+            {
+                _enemyToActivate = desactivatedEnemiesList[desactivatedEnemiesList.Count - 1];
+                desactivatedEnemiesList.RemoveAt(desactivatedEnemiesList.Count - 1);
+                _enemyToActivate.transform.position = _enemiesSpawnedPosition;
+                _enemyToActivate.SetActive(true);
+                activeEnemiesList.Add(_enemyToActivate);
+            }
         }
     }
 
@@ -92,7 +95,7 @@ public class EnemiesSpawnManager : MonoBehaviour
         _actualWave = 1;
         _enemiesNumberToSpawn = 10;
         _enemyMaxNumber = _enemiesNumberToSpawn * (5 * _waveMax);
-        _spawnTimer = 60f;
+        _spawnTimer = 10f;
         _spawnTimerCounter = 0f;
         _enemiesSpawnedPosition = _enemiesSpawnerPosition.transform.position;
     }
