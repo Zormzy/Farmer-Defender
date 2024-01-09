@@ -16,3 +16,4 @@ MonoBehaviour:
   Range: 11
   fireRate: 12
   model: {fileID: 21300000, guid: cab40c27ef78f3d40b426f05b46cbbe6, type: 3}
+  turret: {fileID: 7755248738012191702, guid: e7691afa522bbb146bfd08149bcdcb5e, type: 3}
