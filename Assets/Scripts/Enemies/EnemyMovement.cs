@@ -6,11 +6,13 @@ public class EnemyMovement : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Enemy_ScriptableObject _enemyScriptable;
     private EnemiesSpawnManager _enemiesSpawnManager;
+    private PlayerManager _playerManager;
     private GameObject _objectiveGO;
     private NavMeshAgent _enemyNavMeshAgent;
 
     [Header("Varibales")]
     private float _enemySpeed;
+    private int _enemyDamage;
     private Vector3 _enemyDestination;
 
     private void Awake()
@@ -32,18 +34,20 @@ public class EnemyMovement : MonoBehaviour
     private void EnemyMovementInitialization()
     {
         _enemiesSpawnManager = GameObject.Find("Enemies").GetComponent<EnemiesSpawnManager>();
+        _playerManager = GameObject.Find("Level").GetComponent<PlayerManager>();
         _enemyNavMeshAgent = GetComponent<NavMeshAgent>();
         _enemySpeed = _enemyScriptable.enemySpeed;
         _enemyNavMeshAgent.speed = _enemySpeed;
+        _enemyDamage = _enemyScriptable.enemyDamage;
         _objectiveGO = GameObject.FindGameObjectWithTag("Objective");
         _enemyDestination = _objectiveGO.transform.position;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("Objective"))
+        if (other.CompareTag("Objective"))
         {
-            // player take damage
+            _playerManager.OnPlayerTakeDamage(_enemyDamage);
             _enemiesSpawnManager.OnEnemyDeath(gameObject);
         }
     }

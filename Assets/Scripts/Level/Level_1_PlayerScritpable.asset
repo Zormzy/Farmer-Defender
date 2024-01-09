@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267fd91a36334de48a1bd33bd37a426a, type: 3}
-  m_Name: EnemyNormalScritpable
+  m_Script: {fileID: 11500000, guid: 3ef1341846837bc4ab113e909af77307, type: 3}
+  m_Name: Level_1_PlayerScritpable
   m_EditorClassIdentifier: 
-  enemyName: Normal
-  enemyMaxHP: 5
-  enemyHP: 5
-  enemyDamage: 1
-  enemySpeed: 3
+  levelNumber: 1
+  playerMaxHP: 10
+  playerHP: 0
