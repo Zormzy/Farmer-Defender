@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -20,7 +21,10 @@ public class EnemyManager : MonoBehaviour
     public void EnemyTakeDamage(int damage)
     {
         if (_enemyHp - damage <= 0)
+        {
             _enemiesSpawnManager.OnEnemyDeath(gameObject);
+            Economie.Instance.AddGolds(_enemyScriptable.gold);
+        }
         else
             _enemyHp -= damage;
     }

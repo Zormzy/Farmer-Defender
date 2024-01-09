@@ -37,7 +37,7 @@ public class PlaceTurret : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 2000))
         {
-            if(hit.collider.CompareTag("Floor") && turret != null)
+            if(hit.collider.CompareTag("Floor") && turret != null && Economie.Instance.CanBuy(turret.cost))
             {
                 if(!preview.activeSelf)
                     preview.SetActive(true);
@@ -45,9 +45,11 @@ public class PlaceTurret : MonoBehaviour
 
                 if(putTurret && turret != null) 
                 {
-                    GameObject go = Instantiate<GameObject>(turret.turret, hit.point, new Quaternion(0,0,0,0), ParentTurret.transform);
-                    go.GetComponentInChildren<TurretController>().info = turret;
-
+                    if (Economie.Instance.BuySomething(turret.cost))
+                    {
+                        GameObject go = Instantiate<GameObject>(turret.turret, hit.point, new Quaternion(0, 0, 0, 0), ParentTurret.transform);
+                        go.GetComponentInChildren<TurretController>().info = turret;
+                    }
                     putTurret = false;
                     turret = null;
                 }

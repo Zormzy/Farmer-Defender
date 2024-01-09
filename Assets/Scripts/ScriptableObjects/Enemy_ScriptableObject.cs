@@ -8,4 +8,5 @@ public class Enemy_ScriptableObject : ScriptableObject
     public int enemyHP;
     public int enemyDamage;
     public float enemySpeed;
+    public int gold;
 }

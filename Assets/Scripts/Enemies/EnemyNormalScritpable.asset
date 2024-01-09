@@ -16,4 +16,5 @@ MonoBehaviour:
   enemyMaxHP: 5
   enemyHP: 5
   enemyDamage: 1
+  gold: 1
   enemySpeed: 4
