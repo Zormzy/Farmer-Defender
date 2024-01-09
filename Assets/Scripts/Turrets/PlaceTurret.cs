@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlaceTurret : MonoBehaviour
 {
@@ -13,6 +9,7 @@ public class PlaceTurret : MonoBehaviour
     [SerializeField] private Vector2 _mousePosition;
     public GameObject preview;
     public GameObject TurretPrefab;
+    public GameObject ParentTurret;
     private bool putTurret;
 
     private void Awake()
@@ -48,7 +45,9 @@ public class PlaceTurret : MonoBehaviour
 
                 if(putTurret && turret != null) 
                 {
-                    Instantiate<GameObject>(turret.turret, hit.point, new Quaternion(0, 0, 0, 0));
+                    GameObject go = Instantiate<GameObject>(turret.turret, hit.point, new Quaternion(0,0,0,0), ParentTurret.transform);
+                    go.GetComponentInChildren<TurretController>().info = turret;
+
                     putTurret = false;
                     turret = null;
                 }

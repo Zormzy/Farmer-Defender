@@ -40,8 +40,8 @@ public class EnemiesSpawnManager : MonoBehaviour
     private void Start()
     {
         EnemiesInstantiation();
-        _actualWaveTxt.text = "Wave n° : " + _actualWave;
-        _enemiesAliveNumberTxt.text = "Enemies alive n° : \n" + _enemiesAliveNumber;
+        _actualWaveTxt.text = "Wave nÂ° : " + _actualWave;
+        _enemiesAliveNumberTxt.text = "Enemies alive nÂ° : \n" + _enemiesAliveNumber;
     }
 
     private void Update()
@@ -64,7 +64,7 @@ public class EnemiesSpawnManager : MonoBehaviour
         {
             SpawnEnemies();
             _actualWave += 1;
-            _actualWaveTxt.text = "Wave n° : " + _actualWave;
+            _actualWaveTxt.text = "Wave nÂ° : " + _actualWave;
             _enemiesNumberToSpawn += (5 * (_actualWave - 1));
             _spawnTimerCounter = 0f;
         }
@@ -72,15 +72,18 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        for (int i = 0; i < _enemiesNumberToSpawn; i++)
+        if (desactivatedEnemiesList.Count > 0)
         {
-            _enemyToActivate = desactivatedEnemiesList[desactivatedEnemiesList.Count - 1];
-            desactivatedEnemiesList.RemoveAt(desactivatedEnemiesList.Count - 1);
-            _enemyToActivate.transform.position = _enemiesSpawnedPosition;
-            _enemyToActivate.SetActive(true);
-            _enemiesAliveNumber += 1;
-            _enemiesAliveNumberTxt.text = "Enemies alive n° : \n" + _enemiesAliveNumber;
-            activeEnemiesList.Add(_enemyToActivate);
+            for (int i = 0; i < _enemiesNumberToSpawn; i++)
+            {
+                _enemyToActivate = desactivatedEnemiesList[desactivatedEnemiesList.Count - 1];
+                desactivatedEnemiesList.RemoveAt(desactivatedEnemiesList.Count - 1);
+                _enemyToActivate.transform.position = _enemiesSpawnedPosition;
+                _enemyToActivate.SetActive(true);
+                activeEnemiesList.Add(_enemyToActivate);
+                _enemiesAliveNumber += 1;
+                _enemiesAliveNumberTxt.text = "Enemies alive nÂ° : \n" + _enemiesAliveNumber;
+            }
         }
     }
 
@@ -97,7 +100,7 @@ public class EnemiesSpawnManager : MonoBehaviour
         for (int i = 0; i < _enemyMaxNumber; i++)
         {
             GameObject enemyNormal = Instantiate(_enemyNormalPrefab);
-            enemyNormal.name = "EnemyNormal n°" + desactivatedEnemiesList.Count;
+            enemyNormal.name = "EnemyNormal nÂ°" + desactivatedEnemiesList.Count;
             enemyNormal.transform.SetParent(_enemiesParent.transform);
             enemyNormal.SetActive(false);
             desactivatedEnemiesList.Add(enemyNormal);
