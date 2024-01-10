@@ -1,4 +1,7 @@
+using System.IO;
 using UnityEngine;
+using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlaceTurret : MonoBehaviour
 {
@@ -10,7 +13,11 @@ public class PlaceTurret : MonoBehaviour
     public GameObject preview;
     public GameObject TurretPrefab;
     public GameObject ParentTurret;
+    public GameObject EnnemieSpawn;
+    public GameObject Objective;
     private bool putTurret;
+
+    private GameObject lastTurret;
 
     private void Awake()
     {
@@ -28,6 +35,11 @@ public class PlaceTurret : MonoBehaviour
     void Update()
     {
         MakePreview();
+        Debug.Log(IsAlreadyAPath());
+        if (!IsAlreadyAPath())
+        {
+            Destroy(lastTurret);
+        }
     }
 
     public void MakePreview()
@@ -41,7 +53,7 @@ public class PlaceTurret : MonoBehaviour
             {
                 if(!preview.activeSelf)
                     preview.SetActive(true);
-                preview.gameObject.transform.position = hit.point;
+                preview.gameObject.transform.position = hit.point + new Vector3(0,2,0);
 
                 if(putTurret && turret != null) 
                 {
@@ -49,7 +61,9 @@ public class PlaceTurret : MonoBehaviour
                     {
                         GameObject go = Instantiate<GameObject>(turret.turret, hit.point, new Quaternion(0, 0, 0, 0), ParentTurret.transform);
                         go.GetComponentInChildren<TurretController>().info = turret;
+                        lastTurret = go;
                     }
+
                     putTurret = false;
                     turret = null;
                 }
@@ -68,6 +82,30 @@ public class PlaceTurret : MonoBehaviour
             preview.SetActive(false);
         }
 
+    }
+
+    public bool IsAlreadyAPath()
+    {
+        //NavMeshPath path = new();
+        //EnnemieSpawn.GetComponent<NavMeshAgent>().CalculatePath(Objective.transform.position, path);
+        //return EnnemieSpawn.GetComponent<NavMeshAgent>().CalculatePath(Objective.transform.position,path);
+        //NavMeshPath path = new NavMeshPath();
+        //if (NavMesh.CalculatePath(EnnemieSpawn.transform.position, Objective.transform.position, NavMesh.AllAreas, path))
+
+        NavMesh.SamplePosition(EnnemieSpawn.transform.position, out NavMeshHit hitA, 10f, NavMesh.AllAreas);
+        NavMesh.SamplePosition(Objective.transform.position, out NavMeshHit hitB, 10f, NavMesh.AllAreas);
+
+        NavMeshPath path = new NavMeshPath();
+        if (NavMesh.CalculatePath(hitA.position, hitB.position, NavMesh.AllAreas , path))
+        //if(EnnemieSpawn.GetComponent<NavMeshAgent>().CalculatePath(hitB.position, path))
+        {
+            
+            bool isvalid = true;
+            if (path.status != NavMeshPathStatus.PathComplete)
+                isvalid = false;
+            return isvalid;
+        }
+        return false;
     }
 
     public void SelectTurret(TurretsButton tutu)
