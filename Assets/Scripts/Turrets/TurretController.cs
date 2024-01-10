@@ -27,7 +27,7 @@ public class TurretController : MonoBehaviour
             GameObject go = BulletPulling.Instance.GetNew();
             go.transform.position = _transform.position;
             go.GetComponent<BulletScript>().SetDamage(info.damage);
-            go.GetComponent<BulletScript>().SetDirection((enemyToAttack.transform.position - _transform.position ).normalized);
+            go.GetComponent<BulletScript>().SetDirection(enemyToAttack);
         }
     }
 
