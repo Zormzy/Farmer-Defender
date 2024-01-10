@@ -8,4 +8,5 @@ public class Turrets_Info : ScriptableObject
     public float fireRate;
     public Sprite model;
     public GameObject turret;
+    public int cost;
 }

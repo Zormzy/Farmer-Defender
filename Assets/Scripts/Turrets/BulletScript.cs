@@ -4,8 +4,9 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     private Vector3 Direction = new(0,0,0);
+    private GameObject Target;
     private Transform _transform;
-    private float Speed = 20f;
+    public float Speed = 40f;
     private int Damage = 0;
 
     private void Start()
@@ -18,6 +19,8 @@ public class BulletScript : MonoBehaviour
     }
     private void Update()
     {
+        if(Target!= null)
+            Direction = (Target.transform.position - _transform.position).normalized;
         _transform.position += Direction * Speed * Time.deltaTime;
     }
 
@@ -38,5 +41,5 @@ public class BulletScript : MonoBehaviour
     }
 
     public void SetDamage(int damage) => Damage = damage; 
-    public void SetDirection(Vector3 dir) => Direction = dir;   
+    public void SetDirection(GameObject dir) => Target = dir;   
 }
