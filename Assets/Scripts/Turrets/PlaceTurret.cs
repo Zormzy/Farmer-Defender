@@ -1,7 +1,5 @@
-using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlaceTurret : MonoBehaviour
 {
@@ -21,21 +19,15 @@ public class PlaceTurret : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null) { Instance = this; }
+        if (Instance == null) { Instance = this; }
         _camera = Camera.main;
         _transform = transform;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         MakePreview();
-        Debug.Log(IsAlreadyAPath());
+        //Debug.Log(IsAlreadyAPath());
         if (!IsAlreadyAPath())
         {
             Destroy(lastTurret);
@@ -49,13 +41,13 @@ public class PlaceTurret : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 2000))
         {
-            if(hit.collider.CompareTag("Floor") && turret != null && Economie.Instance.CanBuy(turret.cost))
+            if (hit.collider.CompareTag("Floor") && turret != null && Economie.Instance.CanBuy(turret.cost))
             {
-                if(!preview.activeSelf)
+                if (!preview.activeSelf)
                     preview.SetActive(true);
-                preview.gameObject.transform.position = hit.point + new Vector3(0,2,0);
+                preview.gameObject.transform.position = hit.point + new Vector3(0, 2, 0);
 
-                if(putTurret && turret != null) 
+                if (putTurret && turret != null)
                 {
                     if (Economie.Instance.BuySomething(turret.cost))
                     {
@@ -63,7 +55,6 @@ public class PlaceTurret : MonoBehaviour
                         go.GetComponentInChildren<TurretController>().info = turret;
                         lastTurret = go;
                     }
-
                     putTurret = false;
                     turret = null;
                 }
@@ -72,10 +63,6 @@ public class PlaceTurret : MonoBehaviour
             {
                 preview.SetActive(false);
             }
-
-
-
-
         }
         else
         {
@@ -96,10 +83,10 @@ public class PlaceTurret : MonoBehaviour
         NavMesh.SamplePosition(Objective.transform.position, out NavMeshHit hitB, 10f, NavMesh.AllAreas);
 
         NavMeshPath path = new NavMeshPath();
-        if (NavMesh.CalculatePath(hitA.position, hitB.position, NavMesh.AllAreas , path))
+        if (NavMesh.CalculatePath(hitA.position, hitB.position, NavMesh.AllAreas, path))
         //if(EnnemieSpawn.GetComponent<NavMeshAgent>().CalculatePath(hitB.position, path))
         {
-            
+
             bool isvalid = true;
             if (path.status != NavMeshPathStatus.PathComplete)
                 isvalid = false;
@@ -122,5 +109,4 @@ public class PlaceTurret : MonoBehaviour
     {
         putTurret = put;
     }
-
 }

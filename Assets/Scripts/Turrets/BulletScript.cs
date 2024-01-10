@@ -5,7 +5,7 @@ public class BulletScript : MonoBehaviour
 {
     private Vector3 Direction = new(0,0,0);
     private Transform _transform;
-    private float Speed = 20f;
+    public float Speed = 40f;
     private int Damage = 0;
 
     private void Start()
