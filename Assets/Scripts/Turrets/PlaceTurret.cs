@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlaceTurret : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class PlaceTurret : MonoBehaviour
     public GameObject preview;
     public GameObject TurretPrefab;
     public GameObject ParentTurret;
+    public GameObject EnnemieSpawn;
+    public GameObject Objective;
     private bool putTurret;
 
     private void Awake()
@@ -28,6 +32,7 @@ public class PlaceTurret : MonoBehaviour
     void Update()
     {
         MakePreview();
+        Debug.Log(IsAlreadyAPath());
     }
 
     public void MakePreview()
@@ -49,9 +54,15 @@ public class PlaceTurret : MonoBehaviour
                     {
                         GameObject go = Instantiate<GameObject>(turret.turret, hit.point, new Quaternion(0, 0, 0, 0), ParentTurret.transform);
                         go.GetComponentInChildren<TurretController>().info = turret;
+                        if (IsAlreadyAPath())
+                        {
+                            Destroy(go);
+                            Economie.Instance.AddGolds(turret.cost);
+                        }
                     }
-                    putTurret = false;
-                    turret = null;
+
+                    //putTurret = false;
+                    //turret = null;
                 }
             }
             else
@@ -68,6 +79,21 @@ public class PlaceTurret : MonoBehaviour
             preview.SetActive(false);
         }
 
+    }
+
+    public bool IsAlreadyAPath()
+    {
+        //NavMeshPath path = new();
+        //return EnnemieSpawn.GetComponent<NavMeshAgent>().CalculatePath(Objective.transform.position,path);
+        NavMeshPath path = new NavMeshPath();
+        if (/*NavMesh.CalculatePath(EnnemieSpawn.transform.position, Objective.transform.position, NavMesh.AllAreas, path)*/EnnemieSpawn.GetComponent<NavMeshAgent>().CalculatePath(Objective.transform.position, path))
+        {
+            bool isvalid = true;
+            if (path.status != NavMeshPathStatus.PathComplete)
+                isvalid = false;
+            return isvalid;
+        }
+        return false;
     }
 
     public void SelectTurret(TurretsButton tutu)
