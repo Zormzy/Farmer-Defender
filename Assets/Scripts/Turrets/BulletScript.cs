@@ -20,7 +20,7 @@ public class BulletScript : MonoBehaviour
     }
     private void Update()
     {
-        if(Target!= null && Vector3.Distance(Target.transform.position , _transform.position) < 0.1f)
+        if(Target!= null && Vector3.Distance(Target.transform.position , _transform.position) < 0.001f)
         {
             Direction = (Target.transform.position - _transform.position).normalized;
             Direction.y = 0;

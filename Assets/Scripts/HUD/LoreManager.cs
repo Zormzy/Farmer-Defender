@@ -40,7 +40,7 @@ public class LoreManager : MonoBehaviour
         else
         {
             loreCanvas.SetActive(false);
-            //enemiesSpawnManager.startSpawning = true;
+            enemiesSpawnManager.startSpawning = true;
         }
     }
 

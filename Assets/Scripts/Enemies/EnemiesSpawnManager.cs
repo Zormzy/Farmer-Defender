@@ -180,8 +180,8 @@ public class EnemiesSpawnManager : MonoBehaviour
         activeFEnemiesList = new List<GameObject>();
         desactivatedFEnemiesList = new List<GameObject>();
         _enemyToActivate = null;
-        _victoryStatusText = new();
-        _victoryCanvas = new();
+        //_victoryStatusText = new();
+        //_victoryCanvas = new();
         _waveMax = 10;
         _actualWave = 1;
         _enemiesAliveNumber = 0;
