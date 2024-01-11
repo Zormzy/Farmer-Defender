@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 267fd91a36334de48a1bd33bd37a426a, type: 3}
-  m_Name: EnemyNormalScritpable
+  m_Name: EnemyTankScritpable
   m_EditorClassIdentifier: 
-  enemyName: Normal
-  enemyMaxHP: 20
+  enemyName: Tank
+  enemyMaxHP: 50
   enemyHP: 5
   enemyDamage: 1
-  enemySpeed: 4
+  enemySpeed: 2
   gold: 1

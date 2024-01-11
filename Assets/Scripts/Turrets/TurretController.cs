@@ -14,7 +14,10 @@ public class TurretController : MonoBehaviour
     void Start()
     {
         _transform = transform;
+        attackWaitTime = 1 / info.fireRate;
         attackTimer = Time.time + attackWaitTime;
+
+        gameObject.GetComponent<SphereCollider>().radius = info.Range;
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class TurretController : MonoBehaviour
     private GameObject FindNearestEnnemy()
     {
         GameObject nearestEnemy = null;
-        float distance = 1000;
+        float distance = Mathf.Infinity;
         for (int i = 0; i < MyEnnemies.Count; i++)
         {
             if (!MyEnnemies[i].activeSelf)
