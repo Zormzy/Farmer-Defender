@@ -10,7 +10,9 @@ public class EnemiesSpawnManager : MonoBehaviour
     [SerializeField] private GameObject _enemyNormalPrefab;
     [SerializeField] private GameObject _enemyTankPrefab;
     [SerializeField] private GameObject _enemyFastPrefab;
-    [SerializeField] private GameObject _enemiesSpawnerPosition;
+    [SerializeField] private GameObject _enemiesSpawner1Position;
+    [SerializeField] private GameObject _enemiesSpawner2Position;
+    [SerializeField] private GameObject _enemiesSpawner3Position;
     [SerializeField] private TextMeshProUGUI _actualWaveTxt;
     [SerializeField] private TextMeshProUGUI _enemiesAliveNumberTxt;
     private GameObject _enemyToActivate;
@@ -25,16 +27,16 @@ public class EnemiesSpawnManager : MonoBehaviour
     private int _waveMax;
     private int _actualWave;
     private int _enemiesNumberToSpawn;
-    private Vector3 _enemiesSpawnedPosition;
+    private List<Vector3> _enemiesSpawnedPosition;
 
     [Header("Lists")]
     public List<GameObject> activeEnemiesList;
     public List<GameObject> desactivatedEnemiesList;
 
     public List<GameObject> activeTEnemiesList;
-    public List<GameObject> desactivatedTEnemiesList ;
+    public List<GameObject> desactivatedTEnemiesList;
 
-    public List<GameObject> activeFEnemiesList ;
+    public List<GameObject> activeFEnemiesList;
     public List<GameObject> desactivatedFEnemiesList;
 
     [Header("VictoryCanvas")]
@@ -89,15 +91,22 @@ public class EnemiesSpawnManager : MonoBehaviour
     {
         if (desactivatedEnemiesList.Count > 0)
         {
+            int _enemySpawnPos = 0;
             for (int i = 0; i < numberOfSpawn; i++)
             {
                 _enemyToActivate = FoundEnemyByType(Name);
                 FoundEnemyListDesactive(_enemyToActivate).Remove(_enemyToActivate);
-                _enemyToActivate.transform.position = _enemiesSpawnedPosition;
+                _enemyToActivate.transform.position = _enemiesSpawnedPosition[_enemySpawnPos];
                 _enemyToActivate.SetActive(true);
                 FoundEnemyListAlive(_enemyToActivate).Add(_enemyToActivate);
                 _enemiesAliveNumber += 1;
                 _enemiesAliveNumberTxt.text = "Enemies alive n° : \n" + _enemiesAliveNumber;
+
+                if (_enemySpawnPos < 2)
+                    _enemySpawnPos++;
+                else
+                    _enemySpawnPos = 0;
+
                 yield return null;
             }
         }
@@ -118,7 +127,7 @@ public class EnemiesSpawnManager : MonoBehaviour
     {
         string name = enemy.GetComponent<EnemyMovement>().GetName();
 
-        switch (name) 
+        switch (name)
         {
             case "Normal": return activeEnemiesList;
             case "Tank": return activeTEnemiesList;
@@ -180,8 +189,6 @@ public class EnemiesSpawnManager : MonoBehaviour
         activeFEnemiesList = new List<GameObject>();
         desactivatedFEnemiesList = new List<GameObject>();
         _enemyToActivate = null;
-        //_victoryStatusText = new();
-        //_victoryCanvas = new();
         _waveMax = 10;
         _actualWave = 1;
         _enemiesAliveNumber = 0;
@@ -189,6 +196,6 @@ public class EnemiesSpawnManager : MonoBehaviour
         _enemyMaxNumber = _enemiesNumberToSpawn * (5 * _waveMax);
         _spawnTimer = 10f;
         _spawnTimerCounter = 0f;
-        _enemiesSpawnedPosition = _enemiesSpawnerPosition.transform.position;
+        _enemiesSpawnedPosition = new List<Vector3> { _enemiesSpawner1Position.transform.position, _enemiesSpawner2Position.transform.position, _enemiesSpawner3Position.transform.position };
     }
 }
