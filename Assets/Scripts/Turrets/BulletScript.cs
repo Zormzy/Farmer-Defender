@@ -9,6 +9,7 @@ public class BulletScript : MonoBehaviour
     private Transform _transform;
     public float Speed = 40f;
     private int Damage = 0;
+    private bool aim = true;
 
     private void Start()
     {
@@ -16,11 +17,12 @@ public class BulletScript : MonoBehaviour
     }
     private void OnEnable()
     {
+        aim = true;
         StartCoroutine(Disapear());
     }
     private void Update()
     {
-        if(Target!= null && Vector3.Distance(Target.transform.position , _transform.position) < 0.001f)
+        if(Vector3.Distance(Target.transform.position , _transform.position) > 0.1f && aim && Target.activeSelf)
         {
             Direction = (Target.transform.position - _transform.position).normalized;
             Direction.y = 0;
@@ -28,6 +30,7 @@ public class BulletScript : MonoBehaviour
         }
         else
         {
+            aim = false;
             _transform.position += FirstDirection * Speed * Time.deltaTime;
         }
 
