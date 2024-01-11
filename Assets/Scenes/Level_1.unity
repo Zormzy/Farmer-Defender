@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletsParent: {fileID: 1136379779}
-  numberOfBulletToInstanciate: 100
+  numberOfBulletToInstanciate: 10000
   bulletPrefab: {fileID: 7249719264839212669, guid: 1e3a3f6604bb3b648abbb5e9185097b9, type: 3}
 --- !u!114 &453002061
 MonoBehaviour:
@@ -1291,6 +1291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemiesParent: {fileID: 649725531}
   _enemyNormalPrefab: {fileID: 1851758998069785031, guid: bf216d4f7c715e748a8d7d1ce0ebbb21, type: 3}
+  _enemyTankPrefab: {fileID: 1851758998069785031, guid: 3dd97ab65e7c9df4ab27b290285b98bd, type: 3}
+  _enemyFastPrefab: {fileID: 1851758998069785031, guid: ef9484e0e3f9072419d3146e5ac819a6, type: 3}
   _enemiesSpawnerPosition: {fileID: 396058376}
   _actualWaveTxt: {fileID: 1844604889}
   _enemiesAliveNumberTxt: {fileID: 657846782}
@@ -1298,8 +1300,13 @@ MonoBehaviour:
   _spawnTimerCounter: 0
   activeEnemiesList: []
   desactivatedEnemiesList: []
+  activeTEnemiesList: []
+  desactivatedTEnemiesList: []
+  activeFEnemiesList: []
+  desactivatedFEnemiesList: []
   _victoryStatusText: {fileID: 711582231}
   _victoryCanvas: {fileID: 1018517791}
+  startSpawning: 0
 --- !u!1 &657846780
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,6 +3741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meteorPrefab: {fileID: 70482770208307962, guid: e7bac244c7641fb4a8ab1f574d1a5b42, type: 3}
   _meteorParent: {fileID: 1858901883}
+  _eventTimer: 0
+  _eventTimerCounter: 0
 --- !u!4 &1955043496
 Transform:
   m_ObjectHideFlags: 0

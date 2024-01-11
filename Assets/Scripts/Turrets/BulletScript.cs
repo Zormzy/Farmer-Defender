@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    private Vector3 Direction = new(0,0,0);
-    private GameObject Target;
+    [SerializeField]private Vector3 Direction = new(0,0,0);
+    [SerializeField]private Vector3 FirstDirection = new(0, 0, 0);
+    [SerializeField]private GameObject Target;
     private Transform _transform;
     public float Speed = 40f;
     private int Damage = 0;
 
     private void Start()
     {
-        _transform = transform;
+        _transform = gameObject.transform;
     }
     private void OnEnable()
     {
@@ -19,9 +20,17 @@ public class BulletScript : MonoBehaviour
     }
     private void Update()
     {
-        if(Target!= null)
+        if(Target!= null && Vector3.Distance(Target.transform.position , _transform.position) < 0.1f)
+        {
             Direction = (Target.transform.position - _transform.position).normalized;
-        _transform.position += Direction * Speed * Time.deltaTime;
+            Direction.y = 0;
+            _transform.position += Direction * Speed * Time.deltaTime;
+        }
+        else
+        {
+            _transform.position += FirstDirection * Speed * Time.deltaTime;
+        }
+
     }
 
     private IEnumerator Disapear()
@@ -40,6 +49,12 @@ public class BulletScript : MonoBehaviour
         }
     }
 
-    public void SetDamage(int damage) => Damage = damage; 
-    public void SetDirection(GameObject dir) => Target = dir;   
+    public void SetDamage(int damage) => Damage = damage;
+    public void SetDirection(GameObject dir)
+    {
+        Target = dir;
+        if (Target != null)
+            FirstDirection = (Target.transform.position - transform.position).normalized;
+        FirstDirection.y = 0;
+    }
 }

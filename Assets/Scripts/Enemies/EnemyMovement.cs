@@ -51,4 +51,6 @@ public class EnemyMovement : MonoBehaviour
             _enemiesSpawnManager.OnEnemyDeath(gameObject);
         }
     }
+
+    public string GetName() => _enemyScriptable.enemyName;
 }
