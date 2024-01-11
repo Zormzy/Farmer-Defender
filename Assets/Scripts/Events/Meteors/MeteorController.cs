@@ -34,10 +34,13 @@ public class MeteorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision != null && collision.CompareTag("Turret") || 
-            collision != null && collision.CompareTag("Enemy"))
+        if (!_meteorFloor.activeSelf)
         {
-            collision.gameObject.SetActive(false);
+            if (collision != null && collision.CompareTag("Turret") || 
+                collision != null && collision.CompareTag("Enemy"))
+            {
+                collision.gameObject.SetActive(false);
+            }
         }
     }
 
