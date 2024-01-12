@@ -15,6 +15,8 @@ public class EnemiesSpawnManager : MonoBehaviour
     [SerializeField] private GameObject _enemiesSpawner3Position;
     [SerializeField] private TextMeshProUGUI _actualWaveTxt;
     [SerializeField] private TextMeshProUGUI _enemiesAliveNumberTxt;
+    [SerializeField] private EventSpawner _eventSpawner;
+    [SerializeField] private AudioManager _audioManager;
     private GameObject _enemyToActivate;
     private int _enemyMaxNumber;
     private int _enemiesAliveNumber;
@@ -66,6 +68,8 @@ public class EnemiesSpawnManager : MonoBehaviour
         if (_actualWave == _waveMax)
             if (_enemiesAliveNumber <= 0)
             {
+                _audioManager.gamePaused = true;
+                _eventSpawner._gameStarted = false;
                 _victoryStatusText.text = "Success";
                 _victoryCanvas.SetActive(true);
             }

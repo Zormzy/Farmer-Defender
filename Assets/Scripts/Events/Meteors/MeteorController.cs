@@ -36,11 +36,10 @@ public class MeteorController : MonoBehaviour
     {
         if (!_meteorFloor.activeSelf)
         {
-            if (collision != null && collision.CompareTag("Turret") || 
-                collision != null && collision.CompareTag("Enemy"))
-            {
+            if (collision != null && collision.CompareTag("Turret"))
                 collision.gameObject.SetActive(false);
-            }
+            else if (collision != null && collision.CompareTag("Enemy"))
+                collision.gameObject.GetComponent<EnemyManager>().EnemyTakeDamage(999);
         }
     }
 
