@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject _victoryCanvas;
     [SerializeField] private Image _badEndLevelBackground;
     [SerializeField] private Sprite _badEndLevelBackgroundSprite;
+    [SerializeField] private AudioManager _audioManager;
 
     [Header("Variables")]
     private int _playerMaxHP;
@@ -27,6 +28,7 @@ public class PlayerManager : MonoBehaviour
         if (_playerHP - damage <= 0)
         {
             _victoryStatusText.text = "Failed";
+            _audioManager.gamePaused = true;
             _badEndLevelBackground.sprite = _badEndLevelBackgroundSprite;
             _victoryCanvas.SetActive(true);
         }

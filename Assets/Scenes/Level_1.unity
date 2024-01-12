@@ -903,6 +903,8 @@ GameObject:
   - component: {fileID: 453002056}
   - component: {fileID: 453002060}
   - component: {fileID: 453002061}
+  - component: {fileID: 453002062}
+  - component: {fileID: 453002063}
   m_Layer: 0
   m_Name: Controlller
   m_TagString: Untagged
@@ -1068,6 +1070,119 @@ MonoBehaviour:
   GoldTxt: {fileID: 1927693291}
   player: {fileID: 11400000, guid: c841a3449388b0e4d87cc06ca8188992, type: 2}
   numberOfGold: 0
+--- !u!82 &453002062
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453002055}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 294ac482290623941ad618fe0fb45122, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &453002063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453002055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3832e538748ac8b4a9470fa5d81044d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 453002062}
+  _levelAudioClip: {fileID: 8300000, guid: 294ac482290623941ad618fe0fb45122, type: 3}
+  _pauseAudioClip: {fileID: 8300000, guid: af08fb1ab7e47d34491f5a3ec168cfd5, type: 3}
+  _endAudioClip: {fileID: 8300000, guid: af08fb1ab7e47d34491f5a3ec168cfd5, type: 3}
+  gamePaused: 0
 --- !u!1001 &528945845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1836,6 +1951,7 @@ MonoBehaviour:
   _actualWaveTxt: {fileID: 1844604889}
   _enemiesAliveNumberTxt: {fileID: 657846782}
   _eventSpawner: {fileID: 1955043495}
+  _audioManager: {fileID: 0}
   _spawnTimer: 0
   _spawnTimerCounter: 0
   activeEnemiesList: []
@@ -2396,6 +2512,7 @@ MonoBehaviour:
   _victoryCanvas: {fileID: 1018517791}
   _badEndLevelBackground: {fileID: 1138194070}
   _badEndLevelBackgroundSprite: {fileID: 21300000, guid: a822f2865df23784ebf64928912b4909, type: 3}
+  _audioManager: {fileID: 0}
   _playerActualLevel: 0
 --- !u!1 &812767878
 GameObject:
@@ -5498,6 +5615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseCanvas: {fileID: 2030617334}
+  _audioManager: {fileID: 453002063}
 --- !u!114 &2030617336
 MonoBehaviour:
   m_ObjectHideFlags: 0
