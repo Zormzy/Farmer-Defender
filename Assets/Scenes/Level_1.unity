@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2385,6 +2385,8 @@ MonoBehaviour:
   _playerHPText: {fileID: 2071932398}
   _victoryStatusText: {fileID: 711582231}
   _victoryCanvas: {fileID: 1018517791}
+  _badEndLevelBackground: {fileID: 1138194070}
+  _badEndLevelBackgroundSprite: {fileID: 21300000, guid: a822f2865df23784ebf64928912b4909, type: 3}
   _playerActualLevel: 0
 --- !u!1 &812767878
 GameObject:
@@ -2910,7 +2912,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _playerHPText;
     [SerializeField] private TextMeshProUGUI _victoryStatusText;
     [SerializeField] private GameObject _victoryCanvas;
+    [SerializeField] private Image _badEndLevelBackground;
+    [SerializeField] private Sprite _badEndLevelBackgroundSprite;
 
     [Header("Variables")]
     private int _playerMaxHP;
@@ -24,6 +27,7 @@ public class PlayerManager : MonoBehaviour
         if (_playerHP - damage <= 0)
         {
             _victoryStatusText.text = "Failed";
+            _badEndLevelBackground.sprite = _badEndLevelBackgroundSprite;
             _victoryCanvas.SetActive(true);
         }
         else
