@@ -10,7 +10,9 @@ public class BulletScript : MonoBehaviour
     private Transform targetTransform;
     public float Speed = 40f;
     private int Damage = 0;
-    private bool aim = true;
+    [SerializeField]private bool aim = true;
+    public float dist = 0;
+    Vector2 PosA, PosB = Vector2.zero;
 
     private void Start()
     {
@@ -23,8 +25,9 @@ public class BulletScript : MonoBehaviour
     }
     private void Update()
     {
-        
-        if (Vector3.Distance(Target.transform.position , _transform.position) > 0.1f && aim && Target.activeSelf)
+        PosA.Set(Target.transform.position.x, Target.transform.position.z);
+        PosB.Set(_transform.position.x, _transform.position.z);
+        if (Vector2.Distance(PosA, PosB) > 0.1f && aim && Target.activeSelf)
         {
             Direction = (Target.transform.position - _transform.position).normalized;
             Direction.y = 0;
@@ -32,6 +35,7 @@ public class BulletScript : MonoBehaviour
         }
         else
         {
+            Debug.Log("StopAiming");
             aim = false;
             _transform.position += FirstDirection * Speed * Time.deltaTime;
         }
