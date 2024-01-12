@@ -2512,7 +2512,7 @@ MonoBehaviour:
   _victoryCanvas: {fileID: 1018517791}
   _badEndLevelBackground: {fileID: 1138194070}
   _badEndLevelBackgroundSprite: {fileID: 21300000, guid: a822f2865df23784ebf64928912b4909, type: 3}
-  _audioManager: {fileID: 0}
+  _audioManager: {fileID: 453002063}
   _playerActualLevel: 0
 --- !u!1 &812767878
 GameObject:
