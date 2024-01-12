@@ -1835,6 +1835,7 @@ MonoBehaviour:
   _enemiesSpawner3Position: {fileID: 13303750}
   _actualWaveTxt: {fileID: 1844604889}
   _enemiesAliveNumberTxt: {fileID: 657846782}
+  _eventSpawner: {fileID: 1955043495}
   _spawnTimer: 0
   _spawnTimerCounter: 0
   activeEnemiesList: []
