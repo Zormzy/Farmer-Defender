@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2756,6 +2756,7 @@ MonoBehaviour:
   loreTextToDisplay: {fileID: 384638129}
   loreCanvas: {fileID: 913320571}
   enemiesSpawnManager: {fileID: 649725533}
+  eventSpawner: {fileID: 1955043495}
   loreSpeed: 0
 --- !u!114 &913320573
 MonoBehaviour:
@@ -5291,6 +5292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meteorPrefab: {fileID: 2604818330305545280, guid: 82825155599269a44949c10f2442e604, type: 3}
   _meteorParent: {fileID: 1858901883}
+  _gameStarted: 0
   _eventTimer: 0
   _eventTimerCounter: 0
 --- !u!4 &1955043496

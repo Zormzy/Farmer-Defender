@@ -9,6 +9,11 @@ TagManager:
   - Objective
   - Turret
   - Laser
+  - Sheep
+  - Cow
+  - Chicken
+  - Pig
+  - Meteor
   layers:
   - Default
   - TransparentFX

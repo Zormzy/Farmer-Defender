@@ -10,6 +10,7 @@ public class LoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI loreTextToDisplay;
     [SerializeField] private GameObject loreCanvas;
     [SerializeField] private EnemiesSpawnManager enemiesSpawnManager;
+    [SerializeField] private EventSpawner eventSpawner;
 
     [Header("Varibales")]
     private int _textNumber;
@@ -42,6 +43,7 @@ public class LoreManager : MonoBehaviour
         {
             loreCanvas.SetActive(false);
             enemiesSpawnManager.startSpawning = true;
+            eventSpawner._gameStarted = true;
         }
     }
 

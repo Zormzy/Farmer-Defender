@@ -10,6 +10,7 @@ public class EventSpawner : MonoBehaviour
 
     [Header("Variables")]
     private int _meteorCount;
+    public bool _gameStarted;
     public float _eventTimer;
     public float _eventTimerCounter;
     private GameObject _activeMeteor;
@@ -26,16 +27,19 @@ public class EventSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_eventTimerCounter < _eventTimer)
-            _eventTimerCounter += Time.deltaTime;
-        else
+        if (_gameStarted)
         {
-            if (_meteorStack.Count > 0)
+            if (_eventTimerCounter < _eventTimer)
+                _eventTimerCounter += Time.deltaTime;
+            else
             {
-                _activeMeteor = _meteorStack.Pop();
-                _activeMeteor.SetActive(true);
-                _eventTimer = Random.Range(30f, 90f);
-                _eventTimerCounter = 0f;
+                if (_meteorStack.Count > 0)
+                {
+                    _activeMeteor = _meteorStack.Pop();
+                    _activeMeteor.SetActive(true);
+                    _eventTimer = Random.Range(30f, 90f);
+                    _eventTimerCounter = 0f;
+                }
             }
         }
     }
@@ -54,6 +58,7 @@ public class EventSpawner : MonoBehaviour
 
     private void EventSpawnerInitialization()
     {
+        _gameStarted = false;
         _meteorCount = 10;
         _eventTimer = Random.Range(30f, 90f);
         _eventTimerCounter = 0f;
