@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1018,7 +1018,8 @@ MonoBehaviour:
   turret: {fileID: 0}
   _mousePosition: {x: 0, y: 0}
   preview: {fileID: 540296371}
-  TurretPrefab: {fileID: 918249604954204855, guid: 593013b8823d62144a942ea261891ebd, type: 3}
+  normalTurretPrefab: {fileID: 5510196490160580397, guid: d4a0f2259e2db424cb753d6fa5595fb7, type: 3}
+  laserTurretPrefab: {fileID: 716786909962507443, guid: 1e74e40a2e04c9242b1173adbf944ed5, type: 3}
   ParentTurret: {fileID: 565162409}
   EnnemieSpawn: {fileID: 910551574}
   Objective: {fileID: 1761790035}
@@ -1182,7 +1183,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: fd1ff76b2be3c634aa58906961dfe56a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: cb548ff08de412a44aaa6197bb75f4a6, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &540296371
 GameObject:
