@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyTankScritpable
   m_EditorClassIdentifier: 
   enemyName: Tank
-  enemyMaxHP: 50
+  enemyMaxHP: 100
   enemyHP: 5
   enemyDamage: 1
   enemySpeed: 2

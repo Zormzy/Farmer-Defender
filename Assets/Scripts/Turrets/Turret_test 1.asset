@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Turret_test 1
   m_EditorClassIdentifier: 
   damage: 30
-  Range: 11
-  fireRate: 1
+  Range: 15
+  fireRate: 0.8
   model: {fileID: 21300000, guid: cab40c27ef78f3d40b426f05b46cbbe6, type: 3}
   turret: {fileID: 716786909962507443, guid: 1e74e40a2e04c9242b1173adbf944ed5, type: 3}
   cost: 30

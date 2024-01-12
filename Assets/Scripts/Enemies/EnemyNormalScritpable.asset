@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyNormalScritpable
   m_EditorClassIdentifier: 
   enemyName: Normal
-  enemyMaxHP: 20
+  enemyMaxHP: 50
   enemyHP: 5
   enemyDamage: 1
   enemySpeed: 4
