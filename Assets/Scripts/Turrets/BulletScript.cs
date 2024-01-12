@@ -11,7 +11,7 @@ public class BulletScript : MonoBehaviour
     public float Speed = 40f;
     private int Damage = 0;
     [SerializeField]private bool aim = true;
-    Vector2 PosA, PosB = Vector2.zero;
+    private Vector2 PosA, PosB = Vector2.zero;
 
     private void Start()
     {
@@ -26,6 +26,7 @@ public class BulletScript : MonoBehaviour
     {
         PosA.Set(Target.transform.position.x, Target.transform.position.z);
         PosB.Set(_transform.position.x, _transform.position.z);
+
         if (Vector2.Distance(PosA, PosB) > 0.1f && aim && Target.activeSelf)
         {
             Direction = (Target.transform.position - _transform.position).normalized;
@@ -51,6 +52,7 @@ public class BulletScript : MonoBehaviour
     {
         if(other != null && other.gameObject.CompareTag("Enemy")) 
         {
+            if(other.gameObject == Target) { aim = false; }
             other.gameObject.GetComponent<EnemyManager>().EnemyTakeDamage(Damage);
             if(!_transform.CompareTag("Laser") || other.gameObject.CompareTag("Meteor"))
             {
