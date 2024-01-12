@@ -32,6 +32,7 @@ public class LoreManager : MonoBehaviour
     {
         if (loreList[_textNumber + 1].Length > 1)
         {
+            StopAllCoroutines();
             _textNumber++;
             loreActualText = "";
             loreFullText = loreList[_textNumber];
