@@ -11,7 +11,6 @@ public class BulletScript : MonoBehaviour
     public float Speed = 40f;
     private int Damage = 0;
     [SerializeField]private bool aim = true;
-    public float dist = 0;
     Vector2 PosA, PosB = Vector2.zero;
 
     private void Start()
@@ -35,7 +34,6 @@ public class BulletScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("StopAiming");
             aim = false;
             _transform.position += FirstDirection * Speed * Time.deltaTime;
         }
@@ -54,12 +52,11 @@ public class BulletScript : MonoBehaviour
         if(other != null && other.gameObject.CompareTag("Enemy")) 
         {
             other.gameObject.GetComponent<EnemyManager>().EnemyTakeDamage(Damage);
-            if(!_transform.CompareTag("Laser"))
+            if(!_transform.CompareTag("Laser") || other.gameObject.CompareTag("Meteor"))
             {
                 StopAllCoroutines();
                 BulletPulling.Instance.DestroyOne(gameObject);
             }
-                
         }
     }
 
