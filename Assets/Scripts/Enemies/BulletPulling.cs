@@ -30,7 +30,11 @@ public class BulletPulling : MonoBehaviour
 
     public GameObject GetNew()
     {
-        GameObject go = bulletsNotActive.Dequeue();
+        GameObject go;
+        if (bulletsNotActive.Count < 1)
+             go = bulletsNotActive.Dequeue();
+        else
+            go = Instantiate<GameObject>(bulletPrefab, _bulletsParent.transform);
         go.SetActive(true);
         bulletsActive.Add(go);
         return go;

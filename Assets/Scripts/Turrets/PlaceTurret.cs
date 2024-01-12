@@ -9,7 +9,8 @@ public class PlaceTurret : MonoBehaviour
     private Transform _transform;
     [SerializeField] private Vector2 _mousePosition;
     public GameObject preview;
-    public GameObject TurretPrefab;
+    public GameObject normalTurretPrefab;
+    public GameObject laserTurretPrefab;
     public GameObject ParentTurret;
     public GameObject EnnemieSpawn;
     public GameObject Objective;

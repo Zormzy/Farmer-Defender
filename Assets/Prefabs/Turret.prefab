@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2139990044864337252}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac66145773e30e4fabed2b7042b383e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 0}
+  info: {fileID: 11400000, guid: 50992ee797e097d49bb7f0eceb58c3f6, type: 2}
   MyEnnemies: []
   attackWaitTime: 0.5
-  bulletPrefab: {fileID: 7249719264839212669, guid: 1e3a3f6604bb3b648abbb5e9185097b9, type: 3}
+  bulletPrefab: {fileID: 9182324494433381596, guid: 9eb89e30479b70842956618e76b48fde, type: 3}
+  fireType: 0

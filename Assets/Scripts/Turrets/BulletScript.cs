@@ -3,25 +3,42 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    private Vector3 Direction = new(0,0,0);
-    private GameObject Target;
+    [SerializeField]private Vector3 Direction = new(0,0,0);
+    [SerializeField]private Vector3 FirstDirection = new(0, 0, 0);
+    [SerializeField]private GameObject Target;
     private Transform _transform;
+    private Transform targetTransform;
     public float Speed = 40f;
     private int Damage = 0;
+    [SerializeField]private bool aim = true;
+    Vector2 PosA, PosB = Vector2.zero;
 
     private void Start()
     {
-        _transform = transform;
+        _transform = gameObject.transform;
     }
     private void OnEnable()
     {
+        aim = true;
         StartCoroutine(Disapear());
     }
     private void Update()
     {
-        if(Target!= null)
+        PosA.Set(Target.transform.position.x, Target.transform.position.z);
+        PosB.Set(_transform.position.x, _transform.position.z);
+        if (Vector2.Distance(PosA, PosB) > 0.1f && aim && Target.activeSelf)
+        {
             Direction = (Target.transform.position - _transform.position).normalized;
-        _transform.position += Direction * Speed * Time.deltaTime;
+            Direction.y = 0;
+            _transform.position += Direction * Speed * Time.deltaTime;
+        }
+        else
+        {
+            aim = false;
+            _transform.position += FirstDirection * Speed * Time.deltaTime;
+        }
+        transform.forward = FirstDirection;
+
     }
 
     private IEnumerator Disapear()
@@ -34,12 +51,22 @@ public class BulletScript : MonoBehaviour
     {
         if(other != null && other.gameObject.CompareTag("Enemy")) 
         {
-            StopAllCoroutines();
             other.gameObject.GetComponent<EnemyManager>().EnemyTakeDamage(Damage);
-            BulletPulling.Instance.DestroyOne(gameObject);
+            if(!_transform.CompareTag("Laser") || other.gameObject.CompareTag("Meteor"))
+            {
+                StopAllCoroutines();
+                BulletPulling.Instance.DestroyOne(gameObject);
+            }
         }
     }
 
-    public void SetDamage(int damage) => Damage = damage; 
-    public void SetDirection(GameObject dir) => Target = dir;   
+    public void SetDamage(int damage) => Damage = damage;
+    public void SetDirection(GameObject dir)
+    {
+        Target = dir;
+        if (Target != null)
+            FirstDirection = (Target.transform.position - transform.position).normalized;
+        FirstDirection.y = 0;
+        targetTransform = Target.transform;
+    }
 }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb71fee187a5494e89e7e5768b27c18, type: 3}
   m_Name: Turret_test 1
   m_EditorClassIdentifier: 
-  damage: 10
-  Range: 11
-  fireRate: 12
-  model: {fileID: 21300000, guid: cab40c27ef78f3d40b426f05b46cbbe6, type: 3}
-  turret: {fileID: 7755248738012191702, guid: e7691afa522bbb146bfd08149bcdcb5e, type: 3}
+  damage: 30
+  Range: 10
+  fireRate: 0.5
+  model: {fileID: 21300000, guid: d48e20197c929c445aa0c0b55a78a65d, type: 3}
+  turret: {fileID: 716786909962507443, guid: 1e74e40a2e04c9242b1173adbf944ed5, type: 3}
+  cost: 30
