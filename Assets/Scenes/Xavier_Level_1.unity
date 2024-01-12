@@ -1018,8 +1018,8 @@ MonoBehaviour:
   turret: {fileID: 0}
   _mousePosition: {x: 0, y: 0}
   preview: {fileID: 540296371}
-  normalTurretPrefab: {fileID: 5510196490160580397, guid: d4a0f2259e2db424cb753d6fa5595fb7, type: 3}
-  laserTurretPrefab: {fileID: 716786909962507443, guid: 1e74e40a2e04c9242b1173adbf944ed5, type: 3}
+  normalTurretPrefab: {fileID: 0}
+  laserTurretPrefab: {fileID: 0}
   ParentTurret: {fileID: 565162409}
   EnnemieSpawn: {fileID: 910551574}
   Objective: {fileID: 1761790035}
