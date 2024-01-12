@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5696054484864908761}
   - component: {fileID: 2139990044864337252}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: Turret Laser
   m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,4 +221,4 @@ MonoBehaviour:
   MyEnnemies: []
   attackWaitTime: 0.5
   bulletPrefab: {fileID: 9182324494433381596, guid: 9eb89e30479b70842956618e76b48fde, type: 3}
-  fireType: 0
+  fireType: 1

@@ -10,6 +10,12 @@ public class TurretController : MonoBehaviour
     [SerializeField]private float attackWaitTime = 0.5f;
     private float attackTimer;
     public GameObject bulletPrefab;
+    public FireType fireType;
+
+    public enum FireType
+    {
+        Bullet, Laser
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +33,27 @@ public class TurretController : MonoBehaviour
         if (enemyToAttack != null && Time.time > attackTimer) 
         {
             attackTimer = Time.time + attackWaitTime;
-            GameObject go = BulletPulling.Instance.GetNew();
+            GameObject go = GetRightBullet();
             go.transform.position = _transform.position;
             go.GetComponent<BulletScript>().SetDamage(info.damage);
             go.GetComponent<BulletScript>().SetDirection(enemyToAttack);
         }
+    }
+
+    public GameObject GetRightBullet()
+    {
+        GameObject go = null;
+        switch (fireType) 
+        {
+            case FireType.Bullet:
+                go = BulletPulling.Instance.GetNew();
+                break; 
+            case FireType.Laser:
+                go = Instantiate(bulletPrefab);
+                go.transform.LookAt(enemyToAttack.transform);
+                break;
+        }
+        return go;
     }
 
     private GameObject FindNearestEnnemy()

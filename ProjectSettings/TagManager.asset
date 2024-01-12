@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Objective
   - Turret
+  - Laser
   layers:
   - Default
   - TransparentFX

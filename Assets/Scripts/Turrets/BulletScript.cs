@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
     [SerializeField]private Vector3 FirstDirection = new(0, 0, 0);
     [SerializeField]private GameObject Target;
     private Transform _transform;
+    private Transform targetTransform;
     public float Speed = 40f;
     private int Damage = 0;
     private bool aim = true;
@@ -22,16 +23,19 @@ public class BulletScript : MonoBehaviour
     }
     private void Update()
     {
-        if(Vector3.Distance(Target.transform.position , _transform.position) > 0.1f && aim && Target.activeSelf)
+        
+        if (Vector3.Distance(Target.transform.position , _transform.position) > 0.1f && aim && Target.activeSelf)
         {
             Direction = (Target.transform.position - _transform.position).normalized;
             Direction.y = 0;
             _transform.position += Direction * Speed * Time.deltaTime;
+            transform.forward = Direction;
         }
         else
         {
             aim = false;
             _transform.position += FirstDirection * Speed * Time.deltaTime;
+            transform.forward = FirstDirection;
         }
 
     }
@@ -46,9 +50,13 @@ public class BulletScript : MonoBehaviour
     {
         if(other != null && other.gameObject.CompareTag("Enemy")) 
         {
-            StopAllCoroutines();
             other.gameObject.GetComponent<EnemyManager>().EnemyTakeDamage(Damage);
-            BulletPulling.Instance.DestroyOne(gameObject);
+            if(!_transform.CompareTag("Laser"))
+            {
+                StopAllCoroutines();
+                BulletPulling.Instance.DestroyOne(gameObject);
+            }
+                
         }
     }
 
@@ -59,5 +67,6 @@ public class BulletScript : MonoBehaviour
         if (Target != null)
             FirstDirection = (Target.transform.position - transform.position).normalized;
         FirstDirection.y = 0;
+        targetTransform = Target.transform;
     }
 }
