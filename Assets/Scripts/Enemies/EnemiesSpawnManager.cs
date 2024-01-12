@@ -117,8 +117,8 @@ public class EnemiesSpawnManager : MonoBehaviour
         switch (Name)
         {
             case "Normal": return desactivatedEnemiesList[desactivatedEnemiesList.Count - 1];
-            case "Tank": return desactivatedTEnemiesList[desactivatedEnemiesList.Count - 1];
-            case "Fast": return desactivatedFEnemiesList[desactivatedEnemiesList.Count - 1];
+            case "Tank": return desactivatedTEnemiesList[desactivatedTEnemiesList.Count - 1];
+            case "Fast": return desactivatedFEnemiesList[desactivatedFEnemiesList.Count - 1];
         }
         return null;
     }
