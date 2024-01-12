@@ -29,14 +29,13 @@ public class BulletScript : MonoBehaviour
             Direction = (Target.transform.position - _transform.position).normalized;
             Direction.y = 0;
             _transform.position += Direction * Speed * Time.deltaTime;
-            transform.forward = Direction;
         }
         else
         {
             aim = false;
             _transform.position += FirstDirection * Speed * Time.deltaTime;
-            transform.forward = FirstDirection;
         }
+        transform.forward = FirstDirection;
 
     }
 
