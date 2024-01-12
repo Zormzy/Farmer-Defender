@@ -6,6 +6,7 @@ public class TurretController : MonoBehaviour
     public Turrets_Info info;
     [SerializeField]List<GameObject> MyEnnemies = new List<GameObject>();
     private Transform _transform;
+    private Transform _turretTransform;
     private GameObject enemyToAttack;
     [SerializeField]private float attackWaitTime = 0.5f;
     private float attackTimer;
@@ -23,6 +24,7 @@ public class TurretController : MonoBehaviour
         attackWaitTime = 1 / info.fireRate;
         attackTimer = Time.time + attackWaitTime;
 
+        _turretTransform = transform.parent;
         gameObject.GetComponent<SphereCollider>().radius = info.Range;
     }
 
@@ -30,6 +32,10 @@ public class TurretController : MonoBehaviour
     void Update()
     {
         enemyToAttack =  FindNearestEnnemy();
+
+        if (enemyToAttack != null)
+            _turretTransform.LookAt(enemyToAttack.transform);
+
         if (enemyToAttack != null && Time.time > attackTimer) 
         {
             attackTimer = Time.time + attackWaitTime;
